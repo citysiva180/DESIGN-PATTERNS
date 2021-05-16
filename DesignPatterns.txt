@@ -1,0 +1,121 @@
+
+###################################################################################################################################################
+ ____  __ __  ______  __ __   ___   ____       ___      ___  _____ ____   ____  ____       ____   ____  ______  ______    ___  ____   ____   _____
+|    \|  |  ||      ||  |  | /   \ |    \     |   \    /  _]/ ___/|    | /    ||    \     |    \ /    ||      ||      |  /  _]|    \ |    \ / ___/
+|  o  )  |  ||      ||  |  ||     ||  _  |    |    \  /  [_(   \_  |  | |   __||  _  |    |  o  )  o  ||      ||      | /  [_ |  D  )|  _  (   \_ 
+|   _/|  ~  ||_|  |_||  _  ||  O  ||  |  |    |  D  ||    _]\__  | |  | |  |  ||  |  |    |   _/|     ||_|  |_||_|  |_||    _]|    / |  |  |\__  |
+|  |  |___, |  |  |  |  |  ||     ||  |  |    |     ||   [_ /  \ | |  | |  |_ ||  |  |    |  |  |  _  |  |  |    |  |  |   [_ |    \ |  |  |/  \ |
+|  |  |     |  |  |  |  |  ||     ||  |  |    |     ||     |\    | |  | |     ||  |  |    |  |  |  |  |  |  |    |  |  |     ||  .  \|  |  |\    |
+|__|  |____/   |__|  |__|__| \___/ |__|__|    |_____||_____| \___||____||___,_||__|__|    |__|  |__|__|  |__|    |__|  |_____||__|\_||__|__| \___|
+                                                                                                                                                  
+###################################################################################################################################################
+
+Course : Python Design patterns 
+By :  Dimitri Nesteruk 
+Platform :  Udemy.com 
+
+###################################################################################################################################################
+
++------------------------------+
+| Design patterns Introduction |
++------------------------------+
+
+- These are common architectural approaches in building softwares. 
+- This concept was actually researched and written by Gang of Four
+- This has been translated to many other programming languages. 
+- Modern programming languages still utilize Design patterns. 
+
+We would be dealing with the following patterns 
+
+- Creational 
+
+        - Builder
+        - Factories
+        - Prototype
+        - Singleton 
+
+- Structural 
+
+        - Adaptor
+        - Bridge
+        - Composit
+        - Decorator
+        - Facade 
+        - Flyweight
+        - Proxy 
+
+- Behavioural 
+
+        - Chain of responsibility
+        - Command 
+        - Interpreter
+        - Iterator
+        - Mediator
+        - Memento
+        - Observer
+        - Strategy 
+        - Template 
+        - State 
+        - Template 
+        - Visitor 
+
++-------------------------+
+| Solid design Principles |
++-------------------------+
+
+
+
+- Introduced by Robert C Martin 
+
++---------------------------------------------------------+
+| Single Responsibility Principle | Seperation of Concerns|
++---------------------------------------------------------+
+
+SSRP -  Serperation of Concerns 
+
+If you have a class, it should have a primary responsibilities and should not take any 
+irrelevant responsibilities 
+
+- Dont overload your program with too many responsibilities 
+
+In the below code, we could understand that different relevent functionalities 
+are grouped and seperated based on the purpose they make. So its essential that the 
+class should have a single responsibility.
+
+
+
+class Journal:
+    def __init__(self):
+        self.enteries = []
+        self.count = 0
+
+    def add_entry(self, text):
+        self.count += 1
+        self.enteries.append(f'{self.count}:{text}')
+
+    def remove_entry(self, pos):
+        del self.entries[pos]
+
+    def __str__(self):
+        return '\n'.join(self.enteries)
+
+
+first_log = Journal()
+first_log.add_entry("Started Design Patterns")
+first_log.add_entry("Nobody Eats a bug")
+print(f'Journal Entries:\n{first_log}')
+
+# The Seperation of concerns seperates different functionalities in code
+
+
+class HandlePersistance:
+    @staticmethod
+    def save_to_file(journal, filename):
+        file = open(filename, 'w')
+        file.write(str(journal))
+        file.close()
+
++-----------------------+
+| Open close Principles |
++-----------------------+
+
